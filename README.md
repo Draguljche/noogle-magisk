@@ -1,6 +1,6 @@
 # noogle-magisk
 
-Magisk modules for installing microG on stock Android 11-17.
+Magisk/KernelSU(and its forks)/APatch(and its forks) modules for installing microG on stock Android 11-17.
 
 ## Modules
 
