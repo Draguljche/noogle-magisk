@@ -20,7 +20,7 @@ It requires Magisk to be installed obviously as it's a Magisk module. If you don
 > If not, use a command like `# find -L /system -type d -name '*<GmsCore|Phonesky|...>*'` to find the correct path, replace it and then follow the [Build Instructions](#build).
 
 1. Download latest version from [releases](https://github.com/qr243vbi/noogle-magisk/releases)
-    - Or build it yourself
+    - For now build it yourself
 2. Install through Magisk app
 3. Reboot
 4. In Magisk click "Action" button next to module to grant permissions
@@ -66,6 +66,7 @@ User updates | Installing microG updates from F-Droid repo
 The module was tested on:
 Device | OS | Android Version
 :--- | :---: | :---:
+Xiaomi 12T Pro | LunarisAOSP 3.12 | 16
 Nothing Phone (1) | NothingOS 3.0 | 15
 Lenovo Yoga Tab 13 | Stock | 13
 Samsung Galaxy Tab S | LineageOS 17.1 | 10
