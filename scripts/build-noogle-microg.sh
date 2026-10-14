@@ -9,10 +9,10 @@ suffix=MG
 
 show_help() {
 	echo "Usage: $0 [options]"
-	echo "Options:"
-	echo "  -h          Show this help message"
-	echo "  -d <dir>    Specify the destination partition [system|product|system_ext] (default: product)"
-	echo "  -s <suffix>  Specify the suffix to add to the directories and APK names (default: MG)"
+	echo "Options:
+	  -h          Show this help message
+	  -d <dir>    Specify the destination partition [system|product|system_ext] (default: product)
+	  -s <suffix>  Specify the suffix to add to the directories and APK names (default: MG)"
 	exit 0
 }
 
@@ -91,6 +91,8 @@ apksigner sign --v1-signing-enabled true --v2-signing-enabled true \
 	--ks-pass "pass:$key_pass" --key-pass "pass:$key_pass" \
 	"$gsf_apk"
 
+rm -f "$apk_dir"/*.idsig
+
 echo "[P] Copying APKs to module directory..."
 gms_dir="$destination_dir/priv-app/GmsCore$suffix"
 mkdir -p "$module_dir/$gms_dir"
@@ -99,9 +101,9 @@ mkdir -p "$module_dir/$destination_dir/priv-app/GoogleServicesFramework$suffix"
 mkdir -p "$module_dir/system/system_ext/priv-app"
 
 gms_path="$gms_dir/GmsCore$suffix.apk"
-cp "$apk_dir"/com.google.android.gms* "$module_dir/$gms_path"
-cp "$apk_dir"/com.android.vending* "$module_dir/$destination_dir/priv-app/Phonesky$suffix/Phonesky$suffix.apk"
-cp "$apk_dir"/com.google.android.gsf* "$module_dir/$destination_dir/priv-app/GoogleServicesFramework$suffix/GoogleServicesFramework$suffix.apk"
+cp "$apk_dir"/com.google.android.gms*.apk "$module_dir/$gms_path"
+cp "$apk_dir"/com.android.vending*.apk "$module_dir/$destination_dir/priv-app/Phonesky$suffix/Phonesky$suffix.apk"
+cp "$apk_dir"/com.google.android.gsf*.apk "$module_dir/$destination_dir/priv-app/GoogleServicesFramework$suffix/GoogleServicesFramework$suffix.apk"
 
 echo "[P] Copying module files to module directory..."
 cp -r "$src_dir/$module_dir"/* "$module_dir/"
