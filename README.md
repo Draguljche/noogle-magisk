@@ -17,7 +17,7 @@ It requires Magisk to be installed obviously as it's a Magisk module. If you don
 
 > [!WARNING]
 > Please make sure that the contents of the `remove_files` string in the [common.sh](./src/module-microg/common.sh) script exist on your device.
-> If not, use a command like `# find -L /system -type f -name '*<GmsCore|Phonesky|...>*'` to find the correct path, replace it and then follow the [Build Instructions](#build).
+> If not, use a command like `# find -L /system -type d -name '*<GmsCore|Phonesky|...>*'` to find the correct path, replace it and then follow the [Build Instructions](#build).
 
 1. Download latest version from [releases](https://github.com/qr243vbi/noogle-magisk/releases)
     - Or build it yourself
@@ -38,11 +38,19 @@ It requires Magisk to be installed obviously as it's a Magisk module. If you don
     - Check if [msys2](https://www.msys2.org) installed on Windows, or install msys2 following the [instructions](https://www.msys2.org/#installation)
 2. Install `zip`, `curl`, `jq` if not present
     - Type `pacman -S --needed zip curl jq` on msys2
-3. [Download APKs manually](https://microg.org/download.html) and place in `apk/` directory or run `./scripts/download-apks.sh`
-4. Run `scripts/build-noogle-microg.sh`
+3. Install Android SDK build-tools (for `keytool` and `apksigner`)
+    - Download from [Android SDK command-line tools](https://developer.android.com/studio#command-tools)
+    - Add to `PATH`: `export PATH="$PATH:/path/to/android/sdk/build-tools/latest"`
+    - Or set at the top of the build script:
+      ```sh
+      export ANDROID_SDK=/path/to/android/sdk
+      export PATH="$PATH:$ANDROID_SDK/build-tools/latest"
+      ```
+4. [Download APKs manually](https://microg.org/download.html) and place in `apk/` directory or run `./scripts/download-apks.sh`
+5. Run `scripts/build-noogle-microg.sh`
     - Check `-h` flag for help with build options
     - Module will be created in `dist/`
-5. Or run `scripts/install-noogle.sh` to build and install through ADB
+6. Or run `scripts/install-noogle.sh` to build and install through ADB   
 
 ## Tested
 
