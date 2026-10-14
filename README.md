@@ -10,7 +10,7 @@ Noogle microG | Installs microG Services
 
 ## Install
 
-It requires Magisk to be installed obviously as it's a Magisk module. If you don't have it yet, consult the [official installation instructions](https://topjohnwu.github.io/Magisk/install.html).
+It requires Magisk/KernelSU(and its forks)/APatch(and its forks) to be installed obviously as it's a Magisk module. If you don't have it yet, consult the [official installation instructions](https://topjohnwu.github.io/Magisk/install.html).
 
 > [!TIP]
 > It's a good idea to enable ADB debugging as well before installing in case of any issues.
