@@ -20,7 +20,7 @@ It requires Magisk to be installed obviously as it's a Magisk module. If you don
 > If not, use a command like `# find -L /system -type d -name '*<GmsCore|Phonesky|...>*'` to find the correct path, replace it and then follow the [Build Instructions](#build).
 
 1. Download latest version from [releases](https://github.com/qr243vbi/noogle-magisk/releases)
-    - For now build it yourself
+    - Or build it yourself
 2. Install through Magisk app
 3. Reboot
 4. In Magisk click "Action" button next to module to grant permissions
