@@ -71,6 +71,30 @@ elif [ "$apk_count" -gt 3 ]; then
 	exit 1
 fi
 
+# >>> INSERT HERE >>>
+
+echo "[P] Re-signing GsfProxy with v1+v2..."
+
+keystore="$apk_dir/.keystore"
+key_alias="noogle"
+key_pass="noogle"
+
+if [ ! -f "$keystore" ]; then
+	echo "[I] Generating keystore..."
+	keytool -genkey -v -keystore "$keystore" -alias "$key_alias" \
+		-keyalg RSA -keysize 2048 -validity 10000 \
+		-storepass "$key_pass" -keypass "$key_pass" \
+		-dname "CN=Noogle, OU=Dev, O=Dev, L=NA, ST=NA, C=US"
+fi
+
+gsf_apk=$(ls "$apk_dir"/com.google.android.gsf*.apk 2>/dev/null | head -1)
+apksigner sign --v1-signing-enabled true --v2-signing-enabled true \
+	--ks "$keystore" --ks-key-alias "$key_alias" \
+	--ks-pass "pass:$key_pass" --key-pass "pass:$key_pass" \
+	"$gsf_apk"
+
+# >>> END INSERT >>>
+
 echo "[P] Copying APKs to module directory..."
 gms_dir="$destination_dir/priv-app/GmsCore$suffix"
 mkdir -p "$module_dir/$gms_dir"
@@ -105,4 +129,4 @@ cd "$module_dir" || exit
 zip -q -r "../$dist_dir/$module_filename" . -x **/.gitkeep
 cd - || exit
 
-echo "[I] Module noogle-microg built successfully!"
+echo "[I] Module noogle-microg built successfully!"   
