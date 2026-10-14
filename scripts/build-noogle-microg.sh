@@ -71,8 +71,6 @@ elif [ "$apk_count" -gt 3 ]; then
 	exit 1
 fi
 
-# >>> INSERT HERE >>>
-
 echo "[P] Re-signing GsfProxy with v1+v2..."
 
 keystore="$apk_dir/.keystore"
@@ -92,8 +90,6 @@ apksigner sign --v1-signing-enabled true --v2-signing-enabled true \
 	--ks "$keystore" --ks-key-alias "$key_alias" \
 	--ks-pass "pass:$key_pass" --key-pass "pass:$key_pass" \
 	"$gsf_apk"
-
-# >>> END INSERT >>>
 
 echo "[P] Copying APKs to module directory..."
 gms_dir="$destination_dir/priv-app/GmsCore$suffix"
