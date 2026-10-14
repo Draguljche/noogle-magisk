@@ -21,7 +21,7 @@ It requires Magisk/KernelSU(and its forks)/APatch(and its forks) to be installed
 
 1. Download latest version from [releases](https://github.com/qr243vbi/noogle-magisk/releases)
     - Or build it yourself
-2. Install through Magisk app
+2. Install through any root app
 3. Reboot
 4. In Magisk click "Action" button next to module to grant permissions
     - Or open microG app and grant them through Self-Check
@@ -79,7 +79,7 @@ More to come...
 In order for microG apps to have the correct signatures visible by Android, your ROM must allow for [signature spoofing](https://github.com/microg/GmsCore/wiki/Signature-Spoofing). If it does not (like any stock Android), this is the way I recommend:
 
 1. Enable Zygisk in Magisk's settings
-2. Download and install LSPosed through Magisk
+2. Download and install LSPosed through any root app
     - [JingMatrix fork](https://github.com/JingMatrix/LSPosed/releases)
 3. Download and install [FakeGApps](https://github.com/whew-inc/FakeGApps/releases) APK
 4. Reboot
@@ -94,6 +94,6 @@ If you want to use other modules interacting with microG, like Play Integrity Fi
 ### Bootloop
 In this case if you have ADB debugging enabled just connect your phone to PC and run `scripts/disable-noogle.sh` in terminal. It will disable Noogle microG module and reboot your device.
 
-More nuclear option is to run `adb shell magisk --remove-modules`. It will remove all modules from Magisk and reboot.
+More nuclear option is to run for Magisk:`adb shell magisk --remove-modules`, KernelSU (and forks like KernelSU-Next): `adb shell ksud --remove-modules`, APatch (and forks):	`adb shell su -c "rm -rf /data/adb/modules"`. It will remove all modules from Magisk and reboot.
 
 If you don't have ADB enabled, you may try to restart the device a few times (holding Power + Vol-) while keeping Vol- for a while until animalted boot animation will start. This will trigger Magisk safe mode and modules will be disabled. More about this in [official documentation](https://topjohnwu.github.io/Magisk/faq.html).
