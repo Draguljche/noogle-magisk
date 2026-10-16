@@ -1,3 +1,10 @@
+[SelfRef](https://github.com/SelfRef/noogle-magisk) updated and fixed original module. Use his module instead.
+
+
+
+
+
+
 # noogle-magisk
 
 Magisk/KernelSU(and its forks)/APatch(and its forks) modules for installing microG on stock Android 11-17.
